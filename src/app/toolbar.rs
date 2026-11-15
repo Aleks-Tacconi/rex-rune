@@ -196,7 +196,7 @@ pub(super) fn tab_track(s: &Workspace, track: f32, pill: f32) -> El {
                         .box_shadow(inset(1., white(0.09)))
                         .matched(format!("tab-pill:{session}"))
                         .transition(no_presence())
-                        .motion(SNAPPY),
+                        .motion(STILL),
                 );
             } else {
                 tab_el = tab_el.radius(8.).hover(white(0.05));

@@ -1326,6 +1326,7 @@ impl Workspace {
     }
 
     pub fn select_window(&mut self, host: usize, session: String, window: String, tx: &mut Tx) {
+        tx.instant();
         self.observe_navigation();
         self.navigate_to(
             super::navigation::Visit {
