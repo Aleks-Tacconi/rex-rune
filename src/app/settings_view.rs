@@ -208,6 +208,19 @@ fn interface(s: &Workspace) -> El {
                             |i| &mut i.fade_pane_headers_in_inactive_window,
                         ),
                     ),
+                    setting(
+                        "Confirm before closing",
+                        "Ask before closing a tab or pane.",
+                        Switch::new(s.settings.confirm_close)
+                            .label("Confirm before closing")
+                            .hide_label()
+                            .on_toggle_tx(|s: &mut Workspace, _| {
+                                s.settings.confirm_close = !s.settings.confirm_close;
+                                s.save();
+                            })
+                            .build(k)
+                            .key("confirm-close"),
+                    ),
                 ]),
                 footnote(
                     "Only visible header names and available buttons fade. Activity, progress, exceptions and terminal content stay unchanged.",
