@@ -479,16 +479,16 @@ impl Workspace {
                 self.panel.as_mut().unwrap().tab = Some(target);
             }
             TabAction::Close => {
+                let payload = json!({"window_id": target.window});
+                if !self.settings.confirm_close {
+                    self.tab_request(&target, "session.close_window", payload);
+                    return;
+                }
                 let title = format!("Close {}?", target.name);
                 let description = format!(
                     "Ends every program in this tab on {host}. Closing the app itself leaves programs running."
                 );
-                self.confirm(
-                    &title,
-                    "session.close_window",
-                    json!({"window_id": target.window}),
-                    &description,
-                );
+                self.confirm(&title, "session.close_window", payload, &description);
                 self.panel.as_mut().unwrap().tab = Some(target);
             }
         }

@@ -1501,6 +1501,9 @@ impl Workspace {
             // A tab of the session on screen is named in its confirmation (`tabs.rs`).
             Intent::CloseWindow(id) => match self.current_tab(&id) {
                 Some(target) => self.tab_action(target, super::tabs::TabAction::Close, tx),
+                None if !self.settings.confirm_close => {
+                    self.request("session.close_window", json!({"window_id": id}));
+                }
                 None => self.confirm(
                     "Close this tab?",
                     "session.close_window",
@@ -1797,17 +1800,23 @@ impl Workspace {
                 self.panel.as_mut().unwrap().target = Some(target);
             }
             PaneAction::Close => {
+                let payload = json!({"session_id": target.session, "block_id": target.block});
+                if !self.settings.confirm_close {
+                    self.send(
+                        target.host,
+                        HostCommand::Request {
+                            method: "block.close".into(),
+                            payload,
+                        },
+                    );
+                    return;
+                }
                 let title = format!("Close {} in {}?", target.name, target.tab);
                 let description = format!(
                     "Ends the program in this pane on {}. Closing the app itself keeps programs running.",
                     self.settings.hosts[target.host].label
                 );
-                self.confirm(
-                    &title,
-                    "block.close",
-                    json!({"session_id":target.session,"block_id":target.block}),
-                    &description,
-                );
+                self.confirm(&title, "block.close", payload, &description);
                 self.panel.as_mut().unwrap().target = Some(target);
             }
             PaneAction::Reconnect => {

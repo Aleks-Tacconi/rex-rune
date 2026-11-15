@@ -260,6 +260,8 @@ pub struct Settings {
     pub terminal_theme_declared: bool,
     /// Prefer foreground program and directory over shell-set titles. Display only.
     pub generated_titles: bool,
+    /// Ask before closing a tab or pane.
+    pub confirm_close: bool,
     /// Tabs muted from their menu, until unmuted or closed.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub muted_tabs: Vec<MutedTab>,
@@ -313,6 +315,7 @@ impl Default for Settings {
             terminal_theme_chosen: false,
             terminal_theme_declared: false,
             generated_titles: false,
+            confirm_close: true,
             muted_tabs: Vec::new(),
             recent_paths: HashMap::new(),
             recorded_shortcuts: recorded::Recorded::default(),
