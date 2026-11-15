@@ -719,6 +719,8 @@ fn pane_card(
             el().key(format!("pane-outline:{block}"))
                 .absolute(0., 0.)
                 .size(rect[2], rect[3])
+                .radius(CARD_RADIUS)
+                .continuous_corners()
                 .border(1., rgb(accent()).alpha(0.85))
                 .inert()
                 .motion(STILL),
