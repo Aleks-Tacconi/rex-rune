@@ -334,12 +334,10 @@ fn pane_card(
     if !bleed {
         c = c
             .radius(CARD_RADIUS)
-            .continuous_corners()
             .clip_rounded(CARD_RADIUS);
         c = match state {
             CardState::Focused if outlined => c
-                .border_gradient(1., rgb(accent()).alpha(0.85), rgb(accent()).alpha(0.5))
-                .box_shadow(shadow(0., 0., 24., rgb(accent()).alpha(0.2)))
+                .border(1., rgb(accent()).alpha(0.6))
                 .box_shadow(shadow(0., 14., 40., black(0.55))),
             CardState::Target => c.border(1., rgb(accent()).alpha(0.85)).box_shadow(shadow(
                 0.,
@@ -720,8 +718,7 @@ fn pane_card(
                 .absolute(0., 0.)
                 .size(rect[2], rect[3])
                 .radius(CARD_RADIUS)
-                .continuous_corners()
-                .border(1., rgb(accent()).alpha(0.85))
+                .border(1., rgb(accent()).alpha(0.6))
                 .inert()
                 .motion(STILL),
         )
