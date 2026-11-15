@@ -2014,6 +2014,7 @@ fn the_theme_picker_filters_declares_to_every_host_and_returns_to_settings() {
             row("Midnight", "Built in", false),
             row("Rosé Pine", "Built in", false),
             row("Rosé Pine Moon", "Built in", false),
+            row("Rosé Pine Moon Black", "Built in", false),
             row("Gruvbox Dark", "Built in", false),
             row("Rex Test Mocha", "Dark", false),
             row("Paper", "Light", false),
@@ -3774,6 +3775,7 @@ fn a_chrome_palette_applies_at_once_and_brings_its_terminal_theme_until_one_is_c
             ("Midnight".to_owned(), true),
             ("Rosé Pine".to_owned(), false),
             ("Rosé Pine Moon".to_owned(), false),
+            ("Rosé Pine Moon Black".to_owned(), false),
             ("Gruvbox Dark".to_owned(), false),
         ]
     );

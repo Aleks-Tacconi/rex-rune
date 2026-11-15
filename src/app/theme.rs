@@ -123,6 +123,23 @@ pub static ROSE_PINE_MOON: Palette = Palette {
     kit: OnceLock::new(),
 };
 
+/// Rosé Pine Moon on a near-black `#030303` ground, matching the Ghostty theme.
+pub static ROSE_PINE_MOON_BLACK: Palette = Palette {
+    ground: 0x030303,
+    card: 0x030303,
+    popover: 0x101010,
+    ink: 0xe0def4,
+    muted: 0x908caa,
+    accent: 0xc4a7e7,
+    accent2: 0x9ccfd8,
+    live: 0x3e8fb0,
+    warning: 0xf6c177,
+    danger: 0xeb6f92,
+    on_accent: 0x030303,
+    terminal_selection: 0x44415a,
+    kit: OnceLock::new(),
+};
+
 /// Gruvbox Dark: bg, bg1, fg, gray, blue, purple, green, yellow, red, bg2.
 pub static GRUVBOX_DARK: Palette = Palette {
     ground: 0x282828,
@@ -146,6 +163,7 @@ pub fn palette_of(chrome: ChromeTheme) -> &'static Palette {
         ChromeTheme::Midnight => &MIDNIGHT,
         ChromeTheme::RosePine => &ROSE_PINE,
         ChromeTheme::RosePineMoon => &ROSE_PINE_MOON,
+        ChromeTheme::RosePineMoonBlack => &ROSE_PINE_MOON_BLACK,
         ChromeTheme::GruvboxDark => &GRUVBOX_DARK,
     }
 }

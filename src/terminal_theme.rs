@@ -75,6 +75,12 @@ pub const BUILTINS: &[Builtin] = &[
         theme: TerminalTheme::rose_pine_moon,
     },
     Builtin {
+        id: "rose-pine-moon-black",
+        name: "Rosé Pine Moon Black",
+        chrome: ChromeTheme::RosePineMoonBlack,
+        theme: TerminalTheme::rose_pine_moon_black,
+    },
+    Builtin {
         id: "gruvbox-dark",
         name: "Gruvbox Dark",
         chrome: ChromeTheme::GruvboxDark,
@@ -122,6 +128,18 @@ impl TerminalTheme {
     pub fn rose_pine_moon() -> Self {
         Self::full(
             0x232136,
+            [0xe0def4, 0xe0def4, 0x232136, 0x44415a, 0xe0def4],
+            [
+                0x393552, 0xeb6f92, 0x3e8fb0, 0xf6c177, 0x9ccfd8, 0xc4a7e7, 0xea9a97, 0xe0def4,
+                0x6e6a86, 0xeb6f92, 0x3e8fb0, 0xf6c177, 0x9ccfd8, 0xc4a7e7, 0xea9a97, 0xe0def4,
+            ],
+        )
+    }
+
+    /// Rosé Pine Moon on a `#030303` background, matching the Ghostty config.
+    pub fn rose_pine_moon_black() -> Self {
+        Self::full(
+            0x030303,
             [0xe0def4, 0xe0def4, 0x232136, 0x44415a, 0xe0def4],
             [
                 0x393552, 0xeb6f92, 0x3e8fb0, 0xf6c177, 0x9ccfd8, 0xc4a7e7, 0xea9a97, 0xe0def4,

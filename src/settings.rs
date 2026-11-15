@@ -136,16 +136,18 @@ pub struct DownloadsConfig {
 pub enum ChromeTheme {
     RosePine,
     RosePineMoon,
+    RosePineMoonBlack,
     GruvboxDark,
     #[default]
     #[serde(other)]
     Midnight,
 }
 impl ChromeTheme {
-    pub const ALL: [ChromeTheme; 4] = [
+    pub const ALL: [ChromeTheme; 5] = [
         ChromeTheme::Midnight,
         ChromeTheme::RosePine,
         ChromeTheme::RosePineMoon,
+        ChromeTheme::RosePineMoonBlack,
         ChromeTheme::GruvboxDark,
     ];
     pub fn name(self) -> &'static str {
@@ -153,6 +155,7 @@ impl ChromeTheme {
             ChromeTheme::Midnight => "Midnight",
             ChromeTheme::RosePine => "Rosé Pine",
             ChromeTheme::RosePineMoon => "Rosé Pine Moon",
+            ChromeTheme::RosePineMoonBlack => "Rosé Pine Moon Black",
             ChromeTheme::GruvboxDark => "Gruvbox Dark",
         }
     }
@@ -761,6 +764,7 @@ mod tests {
             (ChromeTheme::Midnight, "midnight"),
             (ChromeTheme::RosePine, "rose_pine"),
             (ChromeTheme::RosePineMoon, "rose_pine_moon"),
+            (ChromeTheme::RosePineMoonBlack, "rose_pine_moon_black"),
             (ChromeTheme::GruvboxDark, "gruvbox_dark"),
         ] {
             let s = Settings {
